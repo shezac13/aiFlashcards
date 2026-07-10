@@ -1,0 +1,10 @@
+{
+	"id": "aiFlashcards",
+	"name": "AI Flashcards",
+	"version": "1.0.0",
+	"minAppVersion": "1.0.0",
+	"description": "Creates flashcards from your notes using AI.",
+	"author": "shezac13",
+	"authorUrl": "https://obsidian.md",
+	"isDesktopOnly": false
+}
