@@ -28,7 +28,7 @@ export class AIFlashcardsSettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		new Setting(containerEl)
-			.setName('API Endpoint')
+			.setName('API endpoint')
 			.setDesc("Set your API endpoint for the AI model")
 			.addText((text) =>
 				text
