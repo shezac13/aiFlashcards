@@ -2,12 +2,12 @@ import { App, PluginSettingTab, Setting } from 'obsidian';
 import AIFlashcards from './main';
 
 export interface AIFlashcardsPluginSettings {
-	mySetting: string;
+	apiEndpoint: string;
 	api: 'none' | 'local' | 'remote';
 }
 
 export const DEFAULT_SETTINGS: AIFlashcardsPluginSettings = {
-	mySetting: 'default',
+	apiEndpoint: 'default',
 	api: 'none',
 };
 
@@ -33,9 +33,9 @@ export class AIFlashcardsSettingTab extends PluginSettingTab {
 			.addText((text) =>
 				text
 					.setPlaceholder('Enter your API endpoint')
-					.setValue(this.plugin.settings.mySetting)
+					.setValue(this.plugin.settings.apiEndpoint)
 					.onChange(async (value) => {
-						this.plugin.settings.mySetting = value;
+						this.plugin.settings.apiEndpoint = value;
 						await this.plugin.saveSettings();
 					}),
 			);
