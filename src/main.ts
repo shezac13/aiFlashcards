@@ -9,8 +9,8 @@ import {
 } from 'obsidian';
 import {
 	DEFAULT_SETTINGS,
-	MyPluginSettings,
-	SampleSettingTab,
+	AIFLashcardsPluginSettings,
+	AIFLashcardsSettingTab,
 } from './settings';
 import {
 	FLASHCARDS_VIEW_CONFIG,
