@@ -3,12 +3,12 @@ import MyPlugin from './main';
 
 export interface AIFLashcardsPluginSettings {
 	mySetting: string;
-	api: string;
+	api: 'none' | 'local' | 'remote';
 }
 
 export const DEFAULT_SETTINGS: AIFLashcardsPluginSettings = {
 	mySetting: 'default',
-	api: 'default',
+	api: 'none',
 };
 
 export class AIFLashcardsSettingTab extends PluginSettingTab {
@@ -39,13 +39,27 @@ export class AIFLashcardsSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName('Local AI')
-			.setDesc("Use local AI model instead of remote API")
+			.setDesc('Use a local AI model instead of a remote API')
 			.addToggle((toggle) =>
 				toggle
 					.setValue(this.plugin.settings.api === 'local')
 					.onChange(async (value) => {
-						this.plugin.settings.api = value ? 'local' : 'remote';
+						this.plugin.settings.api = value ? 'local' : 'none';
 						await this.plugin.saveSettings();
+						this.display();
+					}),
+			);
+
+		new Setting(containerEl)
+			.setName('Cloud AI')
+			.setDesc('Use a remote AI model instead of a local one')
+			.addToggle((toggle) =>
+				toggle
+					.setValue(this.plugin.settings.api === 'remote')
+					.onChange(async (value) => {
+						this.plugin.settings.api = value ? 'remote' : 'none';
+						await this.plugin.saveSettings();
+						this.display();
 					}),
 			);
 	}
