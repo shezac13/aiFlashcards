@@ -26,7 +26,7 @@ export default class AIFlashcards extends Plugin {
 
 		this.addRibbonIcon(
 			"square-asterisk",
-			"Open AI Flashcards",
+			"Open AI flashcards",
 			async () => {
 				const leafs = this.app.workspace.getLeavesOfType(
 					FLASHCARDS_VIEW_CONFIG.type
