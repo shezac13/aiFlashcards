@@ -2,7 +2,7 @@
 	"id": "aiFlashcards",
 	"name": "AI Flashcards",
 	"version": "1.0.0",
-	"minAppVersion": "1.0.0",
+	"minAppVersion": "1.7.2",
 	"description": "Creates flashcards from your notes using AI.",
 	"author": "shezac13",
 	"authorUrl": "https://github.com/shezac13",
