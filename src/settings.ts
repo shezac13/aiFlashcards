@@ -1,17 +1,17 @@
 import { App, PluginSettingTab, Setting } from 'obsidian';
 import MyPlugin from './main';
 
-export interface MyPluginSettings {
+export interface AIFLashcardsPluginSettings {
 	mySetting: string;
 	api: string;
 }
 
-export const DEFAULT_SETTINGS: MyPluginSettings = {
+export const DEFAULT_SETTINGS: AIFLashcardsPluginSettings = {
 	mySetting: 'default',
 	api: 'default',
 };
 
-export class SampleSettingTab extends PluginSettingTab {
+export class AIFLashcardsSettingTab extends PluginSettingTab {
 	plugin: MyPlugin;
 
 	constructor(app: App, plugin: MyPlugin) {

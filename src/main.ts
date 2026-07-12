@@ -18,11 +18,11 @@ import {
 
 
 export default class AIFlashcards extends Plugin {
-	settings!: MyPluginSettings;
+	settings!: AIFLashcardsPluginSettings;
 
 	async onload() {
 		await this.loadSettings();
-		this.addSettingTab(new SampleSettingTab(this.app, this));
+		this.addSettingTab(new AIFLashcardsSettingTab(this.app, this));
 
 		this.addRibbonIcon(
 			"square-asterisk",
@@ -71,7 +71,7 @@ export default class AIFlashcards extends Plugin {
 		this.settings = Object.assign(
 			{},
 			DEFAULT_SETTINGS,
-			(await this.loadData()) as Partial<MyPluginSettings>,
+			(await this.loadData()) as Partial<AIFLashcardsPluginSettings>,
 		);
 	}
 
