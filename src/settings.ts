@@ -1,20 +1,23 @@
 import { App, PluginSettingTab, Setting } from 'obsidian';
-import MyPlugin from './main';
+import AIFlashcards from './main';
 
-export interface AIFLashcardsPluginSettings {
+export interface AIFlashcardsPluginSettings {
 	mySetting: string;
 	api: 'none' | 'local' | 'remote';
 }
 
-export const DEFAULT_SETTINGS: AIFLashcardsPluginSettings = {
+export const DEFAULT_SETTINGS: AIFlashcardsPluginSettings = {
 	mySetting: 'default',
 	api: 'none',
 };
 
-export class AIFLashcardsSettingTab extends PluginSettingTab {
-	plugin: MyPlugin;
+export class AIFlashcardsSettingTab extends PluginSettingTab {
+	private plugin: AIFlashcards;
 
-	constructor(app: App, plugin: MyPlugin) {
+	constructor(
+		app: App, 
+		plugin: AIFlashcards
+	) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}

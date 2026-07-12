@@ -9,8 +9,8 @@ import {
 } from 'obsidian';
 import {
 	DEFAULT_SETTINGS,
-	AIFLashcardsPluginSettings,
-	AIFLashcardsSettingTab,
+	AIFlashcardsPluginSettings,
+	AIFlashcardsSettingTab,
 } from './settings';
 import {
 	FLASHCARDS_VIEW_CONFIG,
@@ -18,7 +18,7 @@ import {
 
 
 export default class AIFlashcards extends Plugin {
-	settings!: AIFLashcardsPluginSettings;
+	settings!: AIFlashcardsPluginSettings;
 
 	async onload() {
 		await this.loadSettings();
@@ -72,7 +72,7 @@ export default class AIFlashcards extends Plugin {
 		this.settings = Object.assign(
 			{},
 			DEFAULT_SETTINGS,
-			(await this.loadData()) as Partial<AIFLashcardsPluginSettings>,
+			(await this.loadData()) as Partial<AIFlashcardsPluginSettings>,
 		);
 	}
 
