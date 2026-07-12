@@ -25,14 +25,26 @@ export class SampleSettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		new Setting(containerEl)
-			.setName('Settings #1')
-			.setDesc("It's a secret")
+			.setName('API Endpoint')
+			.setDesc("Set your API endpoint for the AI model")
 			.addText((text) =>
 				text
-					.setPlaceholder('Enter your secret')
+					.setPlaceholder('Enter your API endpoint')
 					.setValue(this.plugin.settings.mySetting)
 					.onChange(async (value) => {
 						this.plugin.settings.mySetting = value;
+						await this.plugin.saveSettings();
+					}),
+			);
+
+		new Setting(containerEl)
+			.setName('Local AI')
+			.setDesc("Use local AI model instead of remote API")
+			.addToggle((toggle) =>
+				toggle
+					.setValue(this.plugin.settings.api === 'local')
+					.onChange(async (value) => {
+						this.plugin.settings.api = value ? 'local' : 'remote';
 						await this.plugin.saveSettings();
 					}),
 			);
