@@ -22,7 +22,7 @@ export default class AIFlashcards extends Plugin {
 
 	async onload() {
 		await this.loadSettings();
-		this.addSettingTab(new AIFLashcardsSettingTab(this.app, this));
+		this.addSettingTab(new AIFlashcardsSettingTab(this.app, this));
 
 		this.addRibbonIcon(
 			"square-asterisk",
