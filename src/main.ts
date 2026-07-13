@@ -1,21 +1,11 @@
-import {
-	Editor,
-	MarkdownView,
-	MarkdownFileInfo,
-	Modal,
-	Notice,
-	Plugin,
-	WorkspaceLeaf,
-} from 'obsidian';
+import { Plugin } from 'obsidian';
 import {
 	DEFAULT_SETTINGS,
 	AIFlashcardsPluginSettings,
 	AIFlashcardsSettingTab,
-} from './settings';
-import {
-	FLASHCARDS_VIEW_CONFIG,
-} from "./constants";
-
+} from 'src/settings';
+import { FLASHCARDS_VIEW_CONFIG } from 'src/constants';
+import FlashcardsView from 'src/ui/flashcardsView';
 
 export default class AIFlashcards extends Plugin {
 	settings!: AIFlashcardsPluginSettings;
