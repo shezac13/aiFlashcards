@@ -1,6 +1,5 @@
 import { App, PluginSettingTab, Setting } from 'obsidian';
-import AIFlashcards from './main';
-
+import AIFlashcards from 'src/main';
 export interface AIFlashcardsPluginSettings {
 	apiEndpoint: string;
 	api: 'none' | 'local' | 'remote';
@@ -14,10 +13,7 @@ export const DEFAULT_SETTINGS: AIFlashcardsPluginSettings = {
 export class AIFlashcardsSettingTab extends PluginSettingTab {
 	private plugin: AIFlashcards;
 
-	constructor(
-		app: App, 
-		plugin: AIFlashcards
-	) {
+	constructor(app: App, plugin: AIFlashcards) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}
@@ -29,7 +25,7 @@ export class AIFlashcardsSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName('API endpoint')
-			.setDesc("Set your API endpoint for the AI model")
+			.setDesc('Set your API endpoint for the AI model')
 			.addText((text) =>
 				text
 					.setPlaceholder('Enter your API endpoint')
