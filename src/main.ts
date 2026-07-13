@@ -25,33 +25,26 @@ export default class AIFlashcards extends Plugin {
 		this.addSettingTab(new AIFlashcardsSettingTab(this.app, this));
 
 		this.addRibbonIcon(
-			"square-asterisk",
-			"Open AI flashcards",
-			async () => {
-				const leafs = this.app.workspace.getLeavesOfType(
-					FLASHCARDS_VIEW_CONFIG.type
-				);
-				let leaf: WorkspaceLeaf;
-				if (leafs.length === 0) {
-					leaf =
-						this.app.workspace.getRightLeaf(false) ??
-						this.app.workspace.getLeaf();
-					await leaf.setViewState({
-						type: FLASHCARDS_VIEW_CONFIG.type,
-					});
-				} else {
-					leaf = leafs.first()!;
-				}
-				await this.app.workspace.revealLeaf(leaf);
-			}
+			'square-asterisk',
+			'Open AI flashcards',
+			() => void this.openFlashcardsView(),
 		);
+	}
 
-		// If the plugin hooks up any global DOM events (on parts of the app that doesn't belong to this plugin)
-		// Using this function will automatically remove the event listener when this plugin is disabled.
-		// this.registerDomEvent(activeDocument, 'click', (_evt: MouseEvent) => {
-		// 	new Notice('Click');
-		// });
+	private async openFlashcardsView(): Promise<void> {
+		const leaves = this.app.workspace.getLeavesOfType(
+			FLASHCARDS_VIEW_CONFIG.type,
+		);
+		const leaf =
+			leaves[0] ??
+			this.app.workspace.getRightLeaf(false) ??
+			this.app.workspace.getLeaf();
 
+		await leaf.setViewState({
+			type: FLASHCARDS_VIEW_CONFIG.type,
+			active: true,
+		});
+		await this.app.workspace.revealLeaf(leaf);
 	}
 
 	onunload() {
