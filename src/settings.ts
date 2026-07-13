@@ -2,12 +2,12 @@ import { App, PluginSettingTab, Setting } from 'obsidian';
 import AIFlashcards from 'src/main';
 export interface AIFlashcardsPluginSettings {
 	apiEndpoint: string;
-	api: 'none' | 'local' | 'remote';
+	apiKey: 'none' | 'local' | 'remote';
 }
 
 export const DEFAULT_SETTINGS: AIFlashcardsPluginSettings = {
 	apiEndpoint: 'default',
-	api: 'none',
+	apiKey: 'none',
 };
 
 export class AIFlashcardsSettingTab extends PluginSettingTab {
@@ -41,9 +41,9 @@ export class AIFlashcardsSettingTab extends PluginSettingTab {
 			.setDesc('Use a local AI model instead of a remote API')
 			.addToggle((toggle) =>
 				toggle
-					.setValue(this.plugin.settings.api === 'local')
+					.setValue(this.plugin.settings.apiKey === 'local')
 					.onChange(async (value) => {
-						this.plugin.settings.api = value ? 'local' : 'none';
+						this.plugin.settings.apiKey = value ? 'local' : 'none';
 						await this.plugin.saveSettings();
 						this.display();
 					}),
@@ -54,9 +54,9 @@ export class AIFlashcardsSettingTab extends PluginSettingTab {
 			.setDesc('Use a remote AI model instead of a local one')
 			.addToggle((toggle) =>
 				toggle
-					.setValue(this.plugin.settings.api === 'remote')
+					.setValue(this.plugin.settings.apiKey === 'remote')
 					.onChange(async (value) => {
-						this.plugin.settings.api = value ? 'remote' : 'none';
+						this.plugin.settings.apiKey = value ? 'remote' : 'none';
 						await this.plugin.saveSettings();
 						this.display();
 					}),
