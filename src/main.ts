@@ -55,17 +55,12 @@ export default class AIFlashcards extends Plugin {
 	}
 
 	onunload() {
-		// removes the leaf from the workspace when the plugin is unloaded/turned off
-		const leafs = this.app.workspace.getLeavesOfType(
-			FLASHCARDS_VIEW_CONFIG.type
+		const leaves = this.app.workspace.getLeavesOfType(
+			FLASHCARDS_VIEW_CONFIG.type,
 		);
-		let leaf: WorkspaceLeaf;
-		if (leafs.length === 0) {
-			return;
-		} else {
-			leaf = leafs.first()!;
+		for (const leaf of leaves) {
+			leaf.detach();
 		}
-		leaf.detach();
 	}
 
 	async loadSettings() {
