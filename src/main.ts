@@ -11,6 +11,11 @@ export default class AIFlashcards extends Plugin {
 	settings!: AIFlashcardsPluginSettings;
 
 	async onload() {
+		this.registerView(
+			FLASHCARDS_VIEW_CONFIG.type,
+			(leaf) => new FlashcardsView(leaf, this),
+		);
+
 		await this.loadSettings();
 		this.addSettingTab(new AIFlashcardsSettingTab(this.app, this));
 
