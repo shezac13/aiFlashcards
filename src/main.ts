@@ -19,6 +19,12 @@ export default class AIFlashcards extends Plugin {
 		await this.loadSettings();
 		this.addSettingTab(new AIFlashcardsSettingTab(this.app, this));
 
+		this.addCommand({
+			id: 'open-flashcards-view',
+			name: 'Open flashcards view',
+			callback: () => void this.openFlashcardsView(),
+		});
+
 		this.addRibbonIcon(
 			'square-asterisk',
 			'Open AI flashcards',
